@@ -1,0 +1,5 @@
+import org.apache.hadoop.mapreduce.reducer;
+
+public class EntityCombiner extends Reducer<Text, IntWritable, Text, IntWritable>{
+
+}

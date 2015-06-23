@@ -1,0 +1,17 @@
+import java.io.IOException;
+
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.mapreduce.Job;
+
+
+public class ReviewDriver extends Configuration{
+
+	public static void main(String[] args) throws Exception {
+
+		Configuration conf = new Configuration();
+		Job job = new Job(conf, "Entity Counter");
+		
+		job.setJarByClass("");
+	}
+
+}

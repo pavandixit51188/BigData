@@ -1,0 +1,11 @@
+import org.apache.hadoop.mapreduce.Job;
+
+
+public class EntityDriver {
+
+	public static void main(String args[]){
+		
+		Job job = new Job();
+		
+	}
+}

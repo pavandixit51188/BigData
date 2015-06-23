@@ -1,0 +1,32 @@
+import java.io.IOException;
+import java.util.StringTokenizer;
+
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Reducer;
+
+
+public class EntityMapper extends Reducer<LongWritable, Text, Text, IntWritable>{
+
+	private Text word = new Text();
+	public static final IntWritable one = new IntWritable(1);
+	public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException{
+		String line = value.toString();
+		StringTokenizer itr = new StringTokenizer(line, "::");
+		
+		while(itr.hasMoreTokens()){
+			if(itr.nextToken().equalsIgnoreCase("review")){
+				word.set("review");
+			}
+			else if(itr.nextToken().equalsIgnoreCase("business")){
+				word.set("business");
+			}
+			else if(itr.nextToken().equalsIgnoreCase("user")){
+				word.set("user");;
+			}
+		}
+		context.write(word, one);
+				
+	}
+}

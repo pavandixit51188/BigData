@@ -1,0 +1,17 @@
+{
+  "/usr/local/hadoop/hadoop-2.6.0/share/hadoop/common/hadoop-common-2.6.0.jar": {
+    "location": "/usr/local/hadoop/hadoop-2.6.0/share/hadoop/common/hadoop-common-2.6.0.jar",
+    "status": "UNRESOLVED",
+    "error": "No call model found for \u0027/usr/local/hadoop/hadoop-2.6.0/share/hadoop/common/hadoop-common-2.6.0.jar\u0027. Neither fingerprint \u00271be50902c532729683db0939de26c4225a797c79\u0027 nor symbolic name \u0027org.apache.hadoop.hadoop-common\u0027 are known."
+  },
+  "/usr/local/hadoop/hadoop-2.6.0/share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.6.0.jar": {
+    "location": "/usr/local/hadoop/hadoop-2.6.0/share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.6.0.jar",
+    "status": "UNRESOLVED",
+    "error": "No call model found for \u0027/usr/local/hadoop/hadoop-2.6.0/share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.6.0.jar\u0027. Neither fingerprint \u002707d14af3e7821ccb46d806f7ae7430c730cbc9c7\u0027 nor symbolic name \u0027org.apache.hadoop.hadoop-mapreduce-client-core\u0027 are known."
+  },
+  "/usr/java/jdk1.6.0_21/jre/lib/rt.jar": {
+    "coordinate": "jre:jre:zip:call:1.0.0",
+    "location": "/usr/java/jdk1.6.0_21/jre/lib/rt.jar",
+    "status": "RESOLVED"
+  }
+}

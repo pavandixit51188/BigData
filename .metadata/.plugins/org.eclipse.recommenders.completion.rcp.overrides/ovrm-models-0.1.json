@@ -1,0 +1,13 @@
+{
+  "/usr/local/hadoop/hadoop-2.6.0/share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.6.0.jar": {
+    "location": "/usr/local/hadoop/hadoop-2.6.0/share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.6.0.jar",
+    "status": "UNRESOLVED",
+    "error": "No call model found for \u0027/usr/local/hadoop/hadoop-2.6.0/share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.6.0.jar\u0027. Neither fingerprint \u002707d14af3e7821ccb46d806f7ae7430c730cbc9c7\u0027 nor symbolic name \u0027org.apache.hadoop.hadoop-mapreduce-client-core\u0027 are known."
+  },
+  "/usr/java/jdk1.6.0_21/jre/lib/rt.jar": {
+    "coordinate": "jre:jre:zip:ovrm:1.0.0",
+    "location": "/usr/java/jdk1.6.0_21/jre/lib/rt.jar",
+    "status": "RESOLVED",
+    "error": "No class path info available for \u0027/usr/java/jdk1.6.0_21/jre/lib/rt.jar\u0027. Skipped."
+  }
+}

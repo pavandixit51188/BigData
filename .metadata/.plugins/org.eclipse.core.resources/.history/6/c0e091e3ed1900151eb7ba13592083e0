@@ -1,0 +1,29 @@
+import java.io.IOException;
+
+import org.apache.hadoop.io.FloatWritable;
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Reducer;
+import org.apache.hadoop.mapreduce.Reducer.Context;
+
+
+public class EntityReducer extends Reducer<Text, IntWritable, Text, FloatWritable> {
+
+	public void reduce(Text key, Iterable<IntWritable> values, Context context) throws IOException, InterruptedException{
+		int counter = 0;
+		float avg = 0;
+		
+		for (IntWritable value : values) {
+		
+			avg += value.get();
+			counter++;
+		}
+		
+		if (counter == 0)
+			counter = 1;
+		avg = avg / counter;
+		
+		context.write(key, new FloatWritable(avg));
+		
+	}
+}

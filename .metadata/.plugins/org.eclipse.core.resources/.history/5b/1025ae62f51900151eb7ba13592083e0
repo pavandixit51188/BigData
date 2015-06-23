@@ -1,0 +1,18 @@
+import java.util.TreeMap;
+
+
+public class Test {
+
+	public static void main(String[] args) {
+
+		TreeMap<Float, String> treeMap = new TreeMap<Float, String>();
+		
+		treeMap.put(5.0f,"pavan");
+		treeMap.put(8.0f,"pavan");
+		treeMap.put(2.0f,"pavan");
+		treeMap.put(3.0f,"pavan");
+		treeMap.put(4.0f,"pavan");
+		treeMap.put(1.0f,"pavan");
+	}
+
+}

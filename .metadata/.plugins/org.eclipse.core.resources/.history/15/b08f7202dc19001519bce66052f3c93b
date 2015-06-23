@@ -1,0 +1,13 @@
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.util.ToolRunner;
+
+
+public class WordCountWithCounter {
+
+	public static void main(String[] args) {
+
+		int exitCode = ToolRunner.run(new Configuration(), new WordCountWithCombiner(), args);
+		System.exit(exitCode);
+	}
+
+}

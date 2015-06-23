@@ -1,0 +1,24 @@
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.TreeMap;
+
+
+public class Test {
+
+	public static void main(String[] args) {
+
+		TreeMap<Float, List<String>> treeMap = new TreeMap<Float, List<String>>();
+		
+		treeMap.put(5.0f, new ArrayList().add("pavan"));
+		treeMap.put(8.0f,"p1");
+		treeMap.put(2.0f,"p2");
+		treeMap.put(3.0f,"pw");
+		treeMap.put(4.0f,"sw");
+		treeMap.put(1.0f,"er");
+		
+		
+		System.out.println(treeMap.keySet());
+	}
+
+}

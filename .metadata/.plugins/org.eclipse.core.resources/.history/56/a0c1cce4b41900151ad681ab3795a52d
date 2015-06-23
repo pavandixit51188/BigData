@@ -1,0 +1,4 @@
+
+public class EntityCombiner extends Reducer<Text, IntWritable, Text, IntWritable>{
+
+}

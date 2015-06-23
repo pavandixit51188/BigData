@@ -1,0 +1,67 @@
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.TreeMap;
+
+import org.apache.hadoop.io.FloatWritable;
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Reducer;
+import org.apache.hadoop.mapreduce.Reducer.Context;
+
+
+public class EntityReducer extends Reducer<Text, IntWritable, Text, FloatWritable> {
+
+	private static final TreeMap<Float, List<Text>> top10Map = new TreeMap<Float, List<Text>>();
+	
+	private static int counter = 0;
+	public void reduce(Text key, Iterable<IntWritable> values, Context context) throws IOException, InterruptedException{
+		int counter = 0;
+		float avg = 0.0f;
+		
+		for (IntWritable value : values) {
+		
+			avg += value.get();
+			counter++;
+		}
+		
+		if (counter == 0)
+			counter = 1;
+		avg = avg / counter;
+		
+		
+		
+		if(!top10Map.containsKey(avg)){
+			List<Text> t = new ArrayList<Text>();
+			t.add(key);
+			top10Map.put(new Float(avg), t);
+			//context.write(new Text(key), new FloatWritable(avg));
+		}
+		else{
+			top10Map.get(avg).add(key);
+			context.write(new Text(key), new FloatWritable(avg));
+			counter++;
+		}
+		
+		if(top10Map.size() > 10)
+			top10Map.remove(top10Map.firstKey());
+			
+		
+		//context.write(key, new FloatWritable(avg));
+		
+	}
+	
+	protected void cleanup(Context context) throws IOException, InterruptedException{
+		for (Float k : top10Map.keySet()) {
+			List<Text> lst = top10Map.get(k);
+			int counter = 10;
+			for(Text key : lst){
+			//	context.write(key, new FloatWritable(k));
+				if(counter-- <= 0)
+					break;
+			}
+			
+		}
+		context.write(new Text("Pavan cleanup is getting called: " +counter), new FloatWritable(counter));
+	}
+}

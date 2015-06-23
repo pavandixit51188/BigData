@@ -1,0 +1,4 @@
+
+public class EntityReducer extends Reducer<Text, IntWritable, Text, IntWritable> {
+
+}

@@ -1,0 +1,24 @@
+import java.io.IOException;
+
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.mapreduce.Job;
+
+
+public class EntityDriver extends Configuration{
+
+	public static void main(String[] args) throws Exception {
+
+		Configuration conf = new Configuration();
+		Job job = new Job(conf, "Entity Counter");
+		
+		job.setJarByClass(EntityDriver.class);
+		
+		job.setMapperClass(EntityMapper.class);
+		job.setMapOutputKeyClass(LongWritable.class);
+		job.setMapOutputValueClass(IntWritable.class);
+		
+	}
+
+}

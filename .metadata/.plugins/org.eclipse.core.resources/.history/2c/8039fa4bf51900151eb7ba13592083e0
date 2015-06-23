@@ -1,0 +1,13 @@
+import java.util.TreeMap;
+
+
+public class Test {
+
+	public static void main(String[] args) {
+
+		TreeMap<Float, String> treeMap = new TreeMap<Float, String>();
+		
+		treeMap.put(5.0,"pavan");
+	}
+
+}

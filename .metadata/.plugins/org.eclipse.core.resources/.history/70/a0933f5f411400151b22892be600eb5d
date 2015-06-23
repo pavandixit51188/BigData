@@ -1,0 +1,14 @@
+import java.io.IOException;
+
+import org.apache.hadoop.mapreduce.Job;
+
+
+public class WordCount {
+
+	public static void main(String[] args) throws IOException {
+
+		Job job = new Job();
+		
+	}
+
+}

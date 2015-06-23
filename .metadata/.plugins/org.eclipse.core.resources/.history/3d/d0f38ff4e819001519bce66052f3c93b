@@ -1,0 +1,18 @@
+import java.io.IOException;
+
+import org.apache.hadoop.mapreduce.Job;
+
+
+public class EntityDriver {
+
+	public static void main(String args[]) throws IOException{
+		
+		Job job = new Job();
+		
+		job.setJobName("Entity Driver");
+		job.setJarByClass(EntityDriver.class);
+		
+		job.setMapperClass(EntityMapper.class);
+		job.setMapOutputKeyClass(Text.class);
+	}
+}

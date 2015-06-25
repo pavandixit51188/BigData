@@ -1,0 +1,36 @@
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.conf.Configured;
+import org.apache.hadoop.filecache.DistributedCache;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.util.Tool;
+import org.apache.hadoop.util.ToolRunner;
+
+
+public class EntityDriver extends Configured implements Tool {
+
+	public static void main(String[] args) throws Exception {
+
+		int exitCode = ToolRunner.run(new Configuration(), new EntityDriver(), args);
+		System.exit(exitCode);
+		
+	}
+
+	@Override
+	public int run(String[] arg0) throws Exception {
+
+		if(arg0.length != 2){
+			System.out.println("Two parameters are required <input dir> <output dir>");
+			return -1;
+		}
+		
+		Job job = new Job(getConf());
+		Configuration conf = job.getConfiguration();
+		
+		job.setJobName("Entity Driver Map-Side Join");
+		
+		DistributedCache 
+		
+		return 0;
+	}
+
+}

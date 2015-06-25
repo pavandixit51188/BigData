@@ -1,0 +1,26 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.hadoop.filecache.DistributedCache;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Mapper;
+
+
+public class EntityMapper extends Mapper<LongWritable, Text, Text, Text>{
+
+	public static List<String> businessList = new ArrayList<String>();
+	private BufferedReader reader;
+	
+	protected void setup(Context context) throws IOException{
+		
+		Path[] cacheLocalFiles = DistributedCache.getLocalCacheFiles(context.getConfiguration());
+		
+		for(Path eachPath : cacheLocalFiles){
+			loadBusinessList(eachPath, context);
+		}
+	}
+}

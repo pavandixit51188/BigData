@@ -26,32 +26,6 @@
     "javaRuntime": true
   },
   {
-    "symbolicName": "jre",
-    "version": {
-      "major": 1,
-      "minor": 0,
-      "micro": 0,
-      "qualifier": ""
-    },
-    "jarFileFingerprint": "3a5ddd2fb7aa0d66abe395c500e06a1e4f0afd6c",
-    "jarFileModificationDate": "2010-07-17T03:39:11-05:00",
-    "location": "/usr/java/jdk1.6.0_21/jre/lib/ext/dnsns.jar",
-    "javaRuntime": true
-  },
-  {
-    "symbolicName": "jre",
-    "version": {
-      "major": 1,
-      "minor": 0,
-      "micro": 0,
-      "qualifier": ""
-    },
-    "jarFileFingerprint": "889dc94fb18c901982d1a1dc21be068878df76a4",
-    "jarFileModificationDate": "2010-07-17T03:38:46-05:00",
-    "location": "/usr/java/jdk1.6.0_21/jre/lib/ext/sunpkcs11.jar",
-    "javaRuntime": true
-  },
-  {
     "symbolicName": "org.apache.hadoop.hadoop-common",
     "version": {
       "major": 2,
@@ -72,9 +46,22 @@
       "micro": 0,
       "qualifier": ""
     },
-    "jarFileFingerprint": "552a2b3b5e6609e28fdd43e7edc26b3afc45074f",
-    "jarFileModificationDate": "2010-07-17T03:54:05-05:00",
-    "location": "/usr/java/jdk1.6.0_21/jre/lib/resources.jar",
+    "jarFileFingerprint": "889dc94fb18c901982d1a1dc21be068878df76a4",
+    "jarFileModificationDate": "2010-07-17T03:38:46-05:00",
+    "location": "/usr/java/jdk1.6.0_21/jre/lib/ext/sunpkcs11.jar",
+    "javaRuntime": true
+  },
+  {
+    "symbolicName": "jre",
+    "version": {
+      "major": 1,
+      "minor": 0,
+      "micro": 0,
+      "qualifier": ""
+    },
+    "jarFileFingerprint": "3a5ddd2fb7aa0d66abe395c500e06a1e4f0afd6c",
+    "jarFileModificationDate": "2010-07-17T03:39:11-05:00",
+    "location": "/usr/java/jdk1.6.0_21/jre/lib/ext/dnsns.jar",
     "javaRuntime": true
   },
   {
@@ -98,10 +85,23 @@
       "micro": 0,
       "qualifier": ""
     },
-    "jarFileFingerprint": "64cbf165f51312bd7509fba77fda69b99205f941",
-    "jarFileModificationDate": "2015-06-15T15:42:14-05:00",
-    "location": "/usr/java/jdk1.6.0_21/jre/lib/rt.jar",
+    "jarFileFingerprint": "552a2b3b5e6609e28fdd43e7edc26b3afc45074f",
+    "jarFileModificationDate": "2010-07-17T03:54:05-05:00",
+    "location": "/usr/java/jdk1.6.0_21/jre/lib/resources.jar",
     "javaRuntime": true
+  },
+  {
+    "symbolicName": "org.apache.hadoop.hadoop-mapreduce-client-core",
+    "version": {
+      "major": 2,
+      "minor": 6,
+      "micro": 0,
+      "qualifier": ""
+    },
+    "jarFileFingerprint": "07d14af3e7821ccb46d806f7ae7430c730cbc9c7",
+    "jarFileModificationDate": "2014-11-13T15:20:32-06:00",
+    "location": "/usr/local/hadoop/hadoop-2.6.0/share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.6.0.jar",
+    "javaRuntime": false
   },
   {
     "symbolicName": "org.apache.commons.cli",
@@ -117,17 +117,17 @@
     "javaRuntime": false
   },
   {
-    "symbolicName": "org.apache.hadoop.hadoop-mapreduce-client-core",
+    "symbolicName": "jre",
     "version": {
-      "major": 2,
-      "minor": 6,
+      "major": 1,
+      "minor": 0,
       "micro": 0,
       "qualifier": ""
     },
-    "jarFileFingerprint": "07d14af3e7821ccb46d806f7ae7430c730cbc9c7",
-    "jarFileModificationDate": "2014-11-13T15:20:32-06:00",
-    "location": "/usr/local/hadoop/hadoop-2.6.0/share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.6.0.jar",
-    "javaRuntime": false
+    "jarFileFingerprint": "64cbf165f51312bd7509fba77fda69b99205f941",
+    "jarFileModificationDate": "2015-06-15T15:42:14-05:00",
+    "location": "/usr/java/jdk1.6.0_21/jre/lib/rt.jar",
+    "javaRuntime": true
   },
   {
     "symbolicName": "jre",

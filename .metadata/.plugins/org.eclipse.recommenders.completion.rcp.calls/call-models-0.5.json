@@ -13,5 +13,10 @@
     "coordinate": "jre:jre:zip:call:1.0.0",
     "location": "/usr/java/jdk1.6.0_21/jre/lib/rt.jar",
     "status": "RESOLVED"
+  },
+  "/home/pd/hadoop_workspace/HW1Q4/src": {
+    "location": "/home/pd/hadoop_workspace/HW1Q4/src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027/home/pd/hadoop_workspace/HW1Q4/src\u0027. Skipped."
   }
 }

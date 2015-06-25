@@ -1,0 +1,63 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.hadoop.filecache.DistributedCache;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Mapper;
+
+
+public class EntityMapper extends Mapper<LongWritable, Text, Text, Text>{
+
+	public static List<String> businessList = new ArrayList<String>();
+	private BufferedReader reader;
+	
+	protected void setup(Context context) throws IOException, InterruptedException{
+		
+		Path[] cacheLocalFiles = DistributedCache.getLocalCacheFiles(context.getConfiguration());
+		
+		context.write(new Text(cacheLocalFiles[0].toString()), new Text("--cache file name"));
+		for(Path eachPath : cacheLocalFiles){
+			loadBusinessList(eachPath, context);
+		}
+	}
+	
+	private void loadBusinessList(Path filePath, Context context) throws IOException{
+		String strLineRead = "";
+		
+		try{
+			reader = new BufferedReader(new FileReader(filePath.toString()));
+			context.write(new Text("loadBusinessList getting called"), new Text("Priya"));
+			while((strLineRead = reader.readLine()) != null){
+				String businessArray[] = strLineRead.split("::");
+				businessList.add(new String(businessArray[2]));
+			}
+		}catch(Exception e){
+			
+		}finally{
+			if(reader != null){
+				reader.close();
+			}
+		}
+	}
+	
+	public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException{
+		
+		String strLine = value.toString();
+		
+		String businessId = strLine.split("::")[2];
+		
+		context.write(new Text(businessList.toString()), new Text(businessId));
+	/*	if(businessList.contains(businessId)){
+			context.write(new Text(strLine.split("::")[8]), new Text(strLine.split("::")[1]));
+		}*/
+	}
+	
+	public void cleanup(Context context) throws IOException, InterruptedException{
+		context.write(new Text("Pavan cleanup is working!"), new Text("--Pavan"));
+	}
+}

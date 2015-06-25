@@ -1,0 +1,50 @@
+import java.net.URI;
+
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.conf.Configured;
+import org.apache.hadoop.filecache.DistributedCache;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import org.apache.hadoop.util.Tool;
+import org.apache.hadoop.util.ToolRunner;
+
+/*
+ * This is a driver class. All the job configuration is done in this class.
+ * */
+public class EntityDriver extends Configured implements Tool {
+
+	public static void main(String[] args) throws Exception {
+
+		int exitCode = ToolRunner.run(new Configuration(), new EntityDriver(), args);
+		System.exit(exitCode);
+		
+	}
+
+	@Override
+	public int run(String[] arg0) throws Exception {
+
+		if(arg0.length != 3){
+			System.out.println("Three parameters are required <cache-file path> <input dir> <output dir>");
+			return -1;
+		}
+		
+		Job job = new Job(getConf());
+		Configuration conf = job.getConfiguration();
+		
+		job.setJobName("Entity Driver Map-Side Join");
+		
+		DistributedCache.addCacheFile(new URI(arg0[0]), conf);
+		//DistributedCache.addCacheFile(new URI("/input/dataset/business.csv"), conf);
+		job.setJarByClass(EntityDriver.class);
+		FileInputFormat.setInputPaths(job, new Path(arg0[1]));
+		FileOutputFormat.setOutputPath(job, new Path(arg0[2]));
+		
+		job.setMapperClass(EntityMapper.class);
+		job.setNumReduceTasks(0);
+		
+		return (job.waitForCompletion(true) ? 0:1);
+	}
+
+}

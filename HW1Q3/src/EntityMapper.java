@@ -7,9 +7,16 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
-
+/*
+ * This is a mapper class.
+ * */
 public class EntityMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
 
+	/*
+	 * function : map
+	 * arguments: LongWritable, Text, Context
+	 * This function will generate businessid and average ratings as key-value pairs.
+	 * */
 	public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException{
 		
 		String line = value.toString();
@@ -22,6 +29,11 @@ public class EntityMapper extends Mapper<LongWritable, Text, Text, IntWritable> 
 		}
 	}
 
+	/*
+	 * function : isNumber
+	 * arguments: stars
+	 * This will check whether the given string is an integer or not.
+	 * */
 	public boolean isNumber(String stars){
 		try{
 			int star = Integer.parseInt(stars);

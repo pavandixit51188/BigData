@@ -8,10 +8,18 @@ import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
-
+/*
+ * This is a driver class which is used for job configuration.
+ * This is the assignment for calculating top 10 entries on the basis of average ratings.
+ * */
 public class EntityDriver {
 
 	public static void main(String args[]) throws IOException, InterruptedException, ClassNotFoundException{
+		
+		if(args.length != 2){
+			System.out.println("Two parameters are required <input-dir> <output-dir>");
+			System.exit(-1);
+		}
 		
 		Job job = new Job();
 		

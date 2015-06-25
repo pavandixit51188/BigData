@@ -6,7 +6,9 @@ import org.apache.hadoop.io.FloatWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
-
+/*
+ * This is a Reducer class which is used for Reduce side join operations.
+ * */
 public class EntityReducer1 extends Reducer<Text, Text, Text, FloatWritable>{
 	
 	private Text tKey = new Text();
@@ -15,6 +17,11 @@ public class EntityReducer1 extends Reducer<Text, Text, Text, FloatWritable>{
 	private List<Text> businessList = new ArrayList<Text>();
 	private List<Text> reviewList = new ArrayList<Text>();
 	
+	/*
+	 * function : reduce
+	 * arguments: Text, Iterable<Text>, Context
+	 * This is a reducer function which is used to generate review and business list from the input data.
+	 * */
 	public void reduce(Text key, Iterable<Text> values, Context context) throws IOException, InterruptedException{
 		
 		businessList.clear();
@@ -35,6 +42,11 @@ public class EntityReducer1 extends Reducer<Text, Text, Text, FloatWritable>{
 		executeJoinLogic(key, context);
 	}
 	
+	/*
+	 * function : executeJoinLogic
+	 * arguments: Text, Context
+	 * In this function join logic is implemented and the whitespaces are replaced with ## symbols.
+	 * */
 	public void executeJoinLogic(Text key, Context context) throws IOException, InterruptedException{
 		
 		if(!businessList.isEmpty() && !reviewList.isEmpty()){

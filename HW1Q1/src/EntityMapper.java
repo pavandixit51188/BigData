@@ -6,11 +6,20 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
-
+/*
+ * This is a mapper class. This is a version class for the data which is not that clean
+ * */
 public class EntityMapper extends Mapper<LongWritable, Text, Text, IntWritable>{
 
 	private Text word = new Text("BUNTY123");
 	public static final IntWritable one = new IntWritable(1);
+	
+	/*
+	 * function : map
+	 * arguments: LongWritable, Text, Context
+	 * This mapper function will emit business or review or user records with value 1.
+	 * Key will be either review or business or user and value is count 1.
+	 * */
 	public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException{
 		String line = value.toString();
 		StringTokenizer itr = new StringTokenizer(line, "::");

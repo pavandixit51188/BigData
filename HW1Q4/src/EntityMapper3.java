@@ -6,10 +6,16 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
-
+/*
+ * This is a mapper class which is used for job chaining.
+ * */
 public class EntityMapper3 extends Mapper<LongWritable, Text, Text, FloatWritable>{
 
-	
+	/*
+	 * function : map
+	 * arguments: LongWritable, Text, Context
+	 * This is a mapper function which will create ratings as value and other field as key
+	 * */
 	public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException{
 		
 		StringTokenizer itr = new StringTokenizer(value.toString());

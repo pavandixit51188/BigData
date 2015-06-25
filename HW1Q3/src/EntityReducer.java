@@ -9,12 +9,21 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.hadoop.mapreduce.Reducer.Context;
 
-
+/*
+ * This is a reducer class. This will calculate the average ratings and 
+ * the top 10 businesses which has highest ratings
+ * */
 public class EntityReducer extends Reducer<Text, IntWritable, Text, FloatWritable> {
 
 	private static final TreeMap<Float, List<Text>> top10Map = new TreeMap<Float, List<Text>>();
 	
 	private static int counter = 0;
+	
+	/*
+	 * function : reduce
+	 * arguments: Text, Iterable<IntWritable>, Context
+	 * In this reduce function average ratings are calculated and stored in the treemap of size 10.
+	 * */
 	public void reduce(Text key, Iterable<IntWritable> values, Context context) throws IOException, InterruptedException{
 		int counter = 0;
 		float avg = 0.0f;
@@ -54,6 +63,11 @@ public class EntityReducer extends Reducer<Text, IntWritable, Text, FloatWritabl
 		
 	}
 	
+	/*
+	 * function : cleanup
+	 * arguments: context
+	 * This is a cleanup function. In this only top 10 entries are written.
+	 * */
 	protected void cleanup(Context context) throws IOException, InterruptedException{
 		int counter = 0;
 		for (Float k : top10Map.descendingKeySet()) {

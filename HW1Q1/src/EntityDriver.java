@@ -7,11 +7,18 @@ import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
-
+/*
+ * This is a driver class where job configuration is done
+ * */
 public class EntityDriver{
 
 	public static void main(String[] args) throws Exception {
 
+		if(args.length != 2){
+			System.out.println("Two parameters are required <input-dir> <output-dir>");
+			System.exit(-1);
+		}
+		
 		Job job = new Job();
 		job.setJobName("Entity Counter");
 		

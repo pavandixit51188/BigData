@@ -26,7 +26,7 @@ public class EntityDriver extends Configured implements Tool {
 	public int run(String[] arg0) throws Exception {
 
 		if(arg0.length != 3){
-			System.out.println("Three parameters are required <cache-file path> <input dir> <output dir>");
+			System.out.println("Three parameters are required <cache-file-path> <input-dir> <output-dir>");
 			return -1;
 		}
 		

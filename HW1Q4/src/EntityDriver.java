@@ -13,6 +13,7 @@ import org.apache.hadoop.util.ToolRunner;
 
 /*
  * This is a driver class. All job configuration is done in this class.
+ * Reduce side join and job chaining is used in this assignment.
  * */
 public class EntityDriver extends Configured implements Tool{
 
@@ -27,6 +28,11 @@ public class EntityDriver extends Configured implements Tool{
 	@Override
 	public int run(String[] arg0) throws Exception {
 		Configuration conf = getConf();
+		
+		if(arg0.length != 3){
+			System.out.println("Three parameters are required <input-dir1> <input-dir2> <output-dir>");
+			return -1;
+		}
 		
 		Job job = new Job(conf, "Entity Driver Join");
 		

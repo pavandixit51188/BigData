@@ -11,7 +11,9 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
-
+/*
+ * This is a driver class. All job configuration is done in this class.
+ * */
 public class EntityDriver extends Configured implements Tool{
 
 	private static final String OUTPUT_PATH = "intermediate_output";

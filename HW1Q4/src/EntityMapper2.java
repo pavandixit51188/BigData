@@ -1,0 +1,17 @@
+import java.io.IOException;
+
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Mapper;
+
+
+public class EntityMapper2 extends Mapper<LongWritable, Text, Text, Text>{
+
+	public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException{
+		
+		String[] line = value.toString().split("::");
+		if("review".equalsIgnoreCase(line[22])){
+			context.write(new Text(line[2]), new Text("rev::"+line[20]));
+		}
+	}
+}

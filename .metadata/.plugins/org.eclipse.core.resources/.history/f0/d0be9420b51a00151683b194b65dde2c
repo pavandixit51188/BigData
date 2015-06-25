@@ -1,0 +1,25 @@
+import java.io.IOException;
+
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Reducer;
+
+
+public class EntityReducer extends Reducer<Text, Text, Text, Text>{
+	
+	private Text tKey = new Text();
+	private Text tValue = new Text();
+	
+	public void reduce(Text key, Iterable<Text> values, Context context) throws IOException, InterruptedException{
+		
+		String temp = "";
+		for(Text value : values){
+			
+			tKey.set(key.toString());
+			//tValue.set(value.toString());
+			temp += " "+value.toString());
+			
+		}
+		tValue.set(temp.toString());
+		context.write(tKey, tValue);
+	}
+}

@@ -1,0 +1,56 @@
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.TreeMap;
+
+import org.apache.hadoop.io.FloatWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Reducer;
+import org.apache.hadoop.mapreduce.Reducer.Context;
+
+
+public class EntityReducer3 extends Reducer<FloatWritable, Text, Text, FloatWritable>{
+
+	private static final TreeMap<Float, List<Text>> top10Map = new TreeMap<Float, List<Text>>();
+	
+	public void reduce(FloatWritable key, Text value, Context context){
+		
+						
+		if(!top10Map.containsKey(key)){
+			List<Text> t = new ArrayList<Text>();
+			t.add(new Text(value));
+			top10Map.put(new Float(key.toString()), t);
+			//context.write(new Text(key), new FloatWritable(avg));
+			//counter ++;
+		}
+		else{
+			top10Map.get(key).add(new Text(value));
+			//context.write(new Text(key), new FloatWritable(avg));
+			//counter++;
+		}
+		
+		if(top10Map.size() > 10){
+			top10Map.remove(top10Map.firstKey());
+			//context.write(new Text("Pavan items are getting removed: "), new FloatWritable(counter));
+		}
+	}
+	
+	
+	
+	protected void cleanup(Context context) throws IOException, InterruptedException{
+		int counter = 0;
+		for (Float k : top10Map.descendingKeySet()) {
+			List<Text> lst = top10Map.get(k);
+			
+			for(Text key : lst){
+				context.write(key, new FloatWritable(k));
+				if(counter++ > 10)
+					break;
+			}
+			
+			if(counter++ > 10)
+				break;
+			
+		}
+	}
+}

@@ -1,0 +1,35 @@
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Reducer;
+
+
+public class EntityReducer extends Reducer<Text, Text, Text, Text>{
+	
+	private Text tKey = new Text();
+	private Text tValue = new Text();
+	
+	private List<String> businessList = new ArrayList<String>();
+	private List<String> reviewList = new ArrayList<String>();
+	
+	public void reduce(Text key, Iterable<Text> values, Context context) throws IOException, InterruptedException{
+		
+		businessList.clear();
+		reviewList.clear();
+		String tmp = "";
+		for(Text value : values){
+			
+			tmp = value.toString().split("::")[0];
+			
+			if("rev".equalsIgnoreCase(tmp)){
+				reviewList.add(value.toString().split("::")[1]);
+			}else if("bus".equalsIgnoreCase(tmp)){
+				businessList.add(value.toString().split("::")[1]);
+			}
+			
+		}
+		context.write(tKey, tValue);
+	}
+}

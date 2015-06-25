@@ -1,0 +1,12 @@
+import org.apache.hadoop.conf.Configured;
+import org.apache.hadoop.util.Tool;
+
+
+public class EntityDriver extends Configured implements Tool{
+
+	public static void main(String[] args) {
+
+		
+	}
+
+}
